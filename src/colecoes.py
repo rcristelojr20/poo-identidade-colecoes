@@ -26,8 +26,10 @@ class Catalogo(Generic[T]):
         return self._itens.get(id)
 
     def remover(self, id: IdSensor) -> bool:
-        # TODO 02: True somente quando uma entrada for removida.
-        return False
+        if id not in self._itens:
+            return False
+        del self._itens[id]
+        return True
 
     def quantidade(self):
         return len(self._itens)
