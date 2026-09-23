@@ -1,0 +1,31 @@
+name: Contratos C++ e Python
+on:
+  push:
+    branches: [main, pratica/01-catalogo, pratica/02-historico]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  contratos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Selecionar contrato pela branch
+        env:
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: |
+          case "$BRANCH" in
+            pratica/01-catalogo) etapa=01 ;;
+            pratica/02-historico) etapa=02 ;;
+            main) etapa=00 ;;
+            *) echo 'Branch invalida: use pratica/01-catalogo ou pratica/02-historico'; exit 2 ;;
+          esac
+          echo "ETAPA=$etapa" >> "$GITHUB_ENV"
+      - name: Executar demonstracao
+        run: make run
+      - name: Executar o mesmo contrato local
+        run: make test ETAPA="$ETAPA"
