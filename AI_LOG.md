@@ -1,9 +1,6 @@
 # Rastreabilidade de IA
 
-Se não utilizou IA, declare explicitamente. Caso tenha utilizado, preencha para cada incremento:
-
 | Pedido ao agente | Sugestão aceita/rejeitada | Minha justificativa técnica | Como conferi |
 |---|---|---|---|
-| preencher | preencher | preencher | preencher |
-
-Não envie código que não consiga explicar. Em avaliação, prepare-se para defender uma comparação, uma regra de duplicata e uma decisão sobre memória.
+| Verificar se havia erros no código e nos testes. | Usei a IA apenas para verificar possíveis erros. | As alterações foram conferidas e eu mantive apenas o que fazia sentido para o exercício. | Executei `make test ETAPA=01` e `make run`. |
+| Melhorar os textos do PR e da documentação. | Aceitei sugestões de organização e escrita. | As sugestões foram usadas apenas para deixar os textos mais claros, mantendo minhas decisões e resultados. | Conferi os textos e comparei com os resultados reais dos testes. |
